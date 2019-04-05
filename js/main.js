@@ -41,18 +41,38 @@ $(document).ready(
       }).fadeIn(500)
     })
 
-    $.ajax('./data/posts.json').done(function (data) {
-      var numPosts = data.posts.lenght
+    // $.ajax({
+    //   url: './data/posts.json',
+    //   type: 'GET',
+    //   dataType: 'json'
+    // }).done(function (data) {
+    //   var numPosts = data.posts.length
+    //   for (var i = 0; i < numPosts; i++) {
+    //     var post = '<div class="col-sm-6 p-5"><h3>'
+    //     post += (i + 1) + '. ' + data.posts[i].title
+    //     post += '</h3><p>'
+    //     post += data.posts[i].body
+    //     post += '</p></div>'
+    //     $('#posts').append(post)
+    //     console.log(post)
+    //   }
+    // })
 
-      for (var i = 0; i < numPosts; i++) {
-        var post = "<div class='col-sm-6 p-5'><h3>"
-        post += (i + 1) + '. ' + data.posts[i].title
-        post += '</h3><p>'
-        post += data.posts[i].body
-        post += '</p></div>'
+    $.ajax({
+      url: 'https://jsonplaceholder.typicode.com/photos',
+      type: 'GET',
+      dataType: 'json'
+    }).done(function (data) {
+      // var numPosts = data.length
+      for (var i = 0; i < 20; i++) {
+        var post = '<div class="col-sm-6 p-5"><h3>'
+        post += (i + 1) + '. ' + data[i].title
+        post += '</h3>'
+        post += '<img src ="' + data[i].url + '">'
+        post += '</div>'
         $('#posts').append(post)
-        console.log(post)
       }
     })
+    AOS.init()
   }
 )

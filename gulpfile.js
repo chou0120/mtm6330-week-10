@@ -30,6 +30,8 @@ gulp.task('scripts', function () {
 
     'node_modules/bootstrap/dist/js/bootstrap.js',
 
+    'node_modules/aos/dist/aos.js',
+
     'js/*.js'
 
   ]) // setting the source files for gulp to work with
